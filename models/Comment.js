@@ -3,6 +3,7 @@ const {Schema, model, Types} = require("mongoose");
 const dateFormat = require("../utils/dateFormat");
 
 //18.3.4
+//18.5.4 added validation
 const ReplySchema = new Schema(
     {
         //set custom id to avoid confusion with parent comment _id
@@ -11,10 +12,14 @@ const ReplySchema = new Schema(
             default: () => new Types.ObjectId()
         },
         replyBody: {
-            type: String
+            type: String,
+            required: true,
+            trim: true
         },
         writtenBy: {
-            type: String
+            type: String,
+            required: true,
+            trim: true
         },
         createdAt: {
             type: Date,
